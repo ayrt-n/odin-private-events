@@ -7,5 +7,7 @@
     <p><%= event.start_time %></p>
     <p><%= event.end_time %></p>
     <%= link_to "Details", event %>
+    <%= button_to "Join", user_event_path(event), method: :put %>
+    <%= button_to "Leave", user_event_path(event), method: :delete %>
   </div>
 <% end %>
