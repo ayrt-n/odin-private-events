@@ -1,4 +1,4 @@
-<h2>User Events!</h2>
+<h2>Hosted Events (<%= @user.created_events.count %>)</h2>
 
 <% @events.each do |event| %>
   <div class="event-container">
@@ -8,3 +8,10 @@
     <p><%= event.end_time %></p>
   </div>
 <% end %>
+
+<h2>Attending Events (<%= @user.attended_events.count %>)</h2>
+<ul>
+  <% @user.attended_events.each do |event| %>
+    <li><%= event.name %></li>
+  <% end %>
+</ul>

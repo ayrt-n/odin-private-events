@@ -2,3 +2,10 @@
 <p>Location: <%= @event.location %></p>
 <p>Start time: <%= @event.start_time %></p>
 <p>End time: <%= @event.end_time %></p>
+
+<h2>Attendees (<%= @event.attendees.count %>)</h2>
+<ul>
+  <% @event.attendees.each do |attendee| %>
+    <li><%= attendee.email %></li>
+  <% end %>
+</ul>
