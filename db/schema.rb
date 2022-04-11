@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_09_174043) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_10_150942) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_174043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attended_event_id"], name: "index_user_events_on_attended_event_id"
+    t.index ["attendee_id", "attended_event_id"], name: "by_attendee_and_event", unique: true
     t.index ["attendee_id"], name: "index_user_events_on_attendee_id"
   end
 
@@ -39,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_174043) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
