@@ -11,12 +11,25 @@
   </head>
 
   <body>
+    <div class="navbar">
+      <div class="nav-items">
+        <li><%= link_to "Create event", new_event_path, class: "button" %></li>
+      </div>
+      <div class="nav-items nav-brand">
+        <li><%= link_to "Home", root_path %></li>
+      </div>
+      <div class="nav-items">
+        <% if user_signed_in? %>
+          <li><%= link_to "My Account", user_path(current_user) %></li>
+          <li><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "link" %></li>
+        <% else %>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <% end %>
+      </div>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= link_to "Home", root_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Create event", new_event_path %>
     <%= yield %>
   </body>
 </html>

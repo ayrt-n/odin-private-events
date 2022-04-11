@@ -1,17 +1,45 @@
-<h2>Hosted Events (<%= @user.created_events.count %>)</h2>
-
-<% @events.each do |event| %>
-  <div class="event-container">
-    <h3><%= event.name %></h3>
-    <p><%= event.location %></p>
-    <p><%= event.start_time %></p>
-    <p><%= event.end_time %></p>
+<div class="index-wrapper">
+  <div class="index">
+    <div class="content-container">
+      <h2>Hosted Events (<%= @user.created_events.count %>)</h2>
+      
+      <h3>Upcoming</h3>
+      <div class="events-container">
+        <% @events.each do |event| %>
+          <div class="event">
+            <h4><%= event.name %></h4>
+            <p><%= event.location %></p>
+            <p><%= event.start_time %></p>
+            <p><%= event.end_time %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="content-container">
+      <h2>Attending Events (<%= @user.attended_events.count %>)</h2>
+      <h3>Upcoming</h3>
+      <div class="events-container">
+        <% @user.attended_events.where("end_time >= :current_time", { current_time: Time.now }).each  do |event| %>
+          <div class="event">
+            <h4><%= event.name %></h4>
+            <p><%= event.location %></p>
+            <p><%= event.start_time %></p>
+            <p><%= event.end_time %></p>
+          </div>
+        <% end %>
+      </div>
+      <h3>Past</h3>
+      <div class="events-container">
+        <% @user.attended_events.where("end_time <= :current_time", { current_time: Time.now }).each  do |event| %>
+          <div class="event">
+            <h4><%= event.name %></h4>
+            <p><%= event.location %></p>
+            <p><%= event.start_time %></p>
+            <p><%= event.end_time %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<h2>Attending Events (<%= @user.attended_events.count %>)</h2>
-<ul>
-  <% @user.attended_events.each do |event| %>
-    <li><%= event.name %></li>
-  <% end %>
-</ul>
+</div>

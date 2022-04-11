@@ -1,13 +1,19 @@
-<h2>Events!</h2>
-
-<% @events.each do |event| %>
-  <div class="event-container">
-    <h3><%= event.name %></h3>
-    <p><%= event.location %></p>
-    <p><%= event.start_time %></p>
-    <p><%= event.end_time %></p>
-    <%= link_to "Details", event %>
-    <%= button_to "Join", user_event_path(event), method: :put %>
-    <%= button_to "Leave", user_event_path(event), method: :delete %>
+<div class="index-wrapper">
+  <div class="index">
+    <h2>Events!</h2>
+    
+    <div class="events-container">
+      <% @events.each do |event| %>
+        <div class="event">
+          <h4><%= event.name %></h4>
+          <p><%= event.location %></p>
+          <p><%= event.start_time %></p>
+          <p><%= event.end_time %></p>
+          <%= link_to "Details", event %>
+          <%= button_to "Join", user_event_path(event), method: :put %>
+          <%= button_to "Leave", user_event_path(event), method: :delete %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
