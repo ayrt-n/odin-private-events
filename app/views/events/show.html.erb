@@ -1,11 +1,21 @@
-<h2><%= @event.name %></h2>
-<p>Location: <%= @event.location %></p>
-<p>Start time: <%= @event.start_time %></p>
-<p>End time: <%= @event.end_time %></p>
+<div class="content-container">
+  <div class="content-card">
+    <div class="card-header">
+      <h2><%= @event.name %></h2>
+      <div class="card-controls">
+        <%= button_to "Join", user_event_path(@event), method: :put %>
+        <%= button_to "Leave", user_event_path(@event), method: :delete %>
+      </div>
+    </div>
 
-<h2>Attendees (<%= @event.attendees.count %>)</h2>
-<ul>
-  <% @event.attendees.each do |attendee| %>
-    <li><%= attendee.email %></li>
-  <% end %>
-</ul>
+
+    <p>Location: <%= @event.location %></p>
+    <p>Start time: <%= @event.start_time %></p>
+    <p>End time: <%= @event.end_time %></p>
+    
+    <h2>Attendees (<%= @event.attendees.count %>)</h2>
+      <% @event.attendees.each do |attendee| %>
+        <li><%= attendee.name %> (<%= attendee.username %>)</li>
+      <% end %>
+  </div>
+</div>
