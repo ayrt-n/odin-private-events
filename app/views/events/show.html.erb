@@ -1,10 +1,16 @@
 <div class="content-container">
   <div class="content-card">
     <div class="card-header">
-      <h2><%= @event.name %></h2>
+      <div>
+        <h2><%= @event.name %></h2>
+        <% if user_signed_in? && current_user.created_events.include?(@event) %>
+          <%= link_to edit_event_path(@event) do %>
+            <%= image_tag('edit', class: "settings") %>
+          <% end%>
+        <% end %>
+      </div>
       <div class="card-controls">
-        <%= button_to "Join", user_event_path(@event), method: :put %>
-        <%= button_to "Leave", user_event_path(@event), method: :delete %>
+        <%= render 'shared/event_buttons', :event => @event %>
       </div>
     </div>
 
@@ -12,10 +18,14 @@
     <p>Location: <%= @event.location %></p>
     <p>Start time: <%= @event.start_time %></p>
     <p>End time: <%= @event.end_time %></p>
+
+    <div>
+      <p><%= @event.description %></p>
+    </div>
     
     <h2>Attendees (<%= @event.attendees.count %>)</h2>
       <% @event.attendees.each do |attendee| %>
-        <li><%= attendee.name %> (<%= attendee.username %>)</li>
+        <li><%= attendee.name %> (<%= link_to attendee.username, attendee %>)</li>
       <% end %>
   </div>
 </div>
