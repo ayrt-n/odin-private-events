@@ -1,0 +1,5 @@
+<% if user_signed_in? && current_user.attended_events.include?(event)%>
+  <%= button_to "Leave", user_event_path(event), method: :delete %>
+<% else %>
+  <%= button_to "Join", user_event_path(event), method: :put %>
+<% end %>
