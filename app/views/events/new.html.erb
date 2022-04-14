@@ -1,40 +1,6 @@
 <div class="content-container">
   <div class="content-card form">
-    <% if @event.errors.any? %>
-      <div class="error-messages">
-        <p>Event could not be created as a result of the following error(s):</p>
-        <ul>
-          <% @event.errors.full_messages.each do |error| %>
-            <li><%= error %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <h2>Create Event!</h2>
-    
-    <%= form_with model: @event do |form| %>
-      <div class="field">
-        <%= form.label :name %><br>
-        <%= form.text_field :name %>
-      </div>
-      <div class="field">
-        <%= form.label :location %><br>
-        <%= form.text_field :location %>
-      </div>
-      <div class="field">
-        <%= form.label :start_time %><br>
-        <%= form.datetime_field :start_time %>
-      </div>
-      <div class="field">
-        <%= form.label :end_time %><br>
-        <%= form.datetime_field :end_time %>
-      </div>
-      <div class="field">
-        <%= form.label :description %><br>
-        <%= form.text_area :description %>
-      </div>
-      <%= form.submit "Create" %>
-    <% end %>
+    <h2>Create event!</h2>
+    <%= render 'event_form' %>
   </div>
 </div>
