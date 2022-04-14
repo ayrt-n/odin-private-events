@@ -96,3 +96,14 @@ div.card-header {
   display: inline;
 }
 
+.card-header h2 {
+  display: inline;
+}
+
+p.notice,
+p.alert {
+  width: 100vw;
+  text-align: center;
+  padding: 0.5rem;
+  background-color: #fb923c;
+}
