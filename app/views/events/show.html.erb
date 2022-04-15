@@ -5,7 +5,7 @@
         <h2><%= @event.name %></h2>
         <% if user_signed_in? && current_user.created_events.include?(@event) %>
           <%= link_to edit_event_path(@event) do %>
-            <%= image_tag('edit', class: "settings") %>
+            <%= image_tag('edit.svg', class: "settings") %>
           <% end%>
         <% end %>
       </div>

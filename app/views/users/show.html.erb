@@ -1,13 +1,13 @@
 <div class="content-container">
   <div class="profile-header">
     <div class="user">
-      <%= image_tag('anon-profile', class: "pfp large") %>
+      <%= image_tag('anon-profile.png', class: "pfp large") %>
       <h1><%= @user.name %></h1>
     </div>
     <div class="user-controls">
       <% if current_user == @user %>
         <%= link_to edit_user_registration_path do %>
-          <%= image_tag('settings', class: "settings") %>
+          <%= image_tag('settings.svg', class: "settings") %>
         <% end%>
       <% end %>
     </div>
